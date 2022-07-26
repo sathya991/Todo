@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
 import 'package:rive_splash_screen/rive_splash_screen.dart';
+import 'package:todo/providers/image_provider.dart';
 import 'package:todo/providers/login_signup_provider.dart';
 import 'package:todo/screens/dashboard.dart';
 import 'package:todo/screens/login_signup.dart';
@@ -14,9 +15,14 @@ Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.removeAfter(initialization);
   await Firebase.initializeApp();
-  runApp(MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => LoginSignupProvider())],
-      child: const MyApp()));
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider<LoginSignupProvider>(
+      create: (_) => LoginSignupProvider(),
+    ),
+    ChangeNotifierProvider<RandomImageProvider>(
+      create: (_) => RandomImageProvider(),
+    )
+  ], child: const MyApp()));
 }
 
 Future initialization(BuildContext? context) async {
