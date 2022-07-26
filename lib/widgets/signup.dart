@@ -21,7 +21,7 @@ class SignupWidget extends StatelessWidget {
         try {
           await FirebaseAuth.instance
               .createUserWithEmailAndPassword(
-                  email: _email, password: _password)
+                  email: _email.trim(), password: _password.trim())
               .then((value) async {
             await FirebaseFirestore.instance
                 .collection('users')

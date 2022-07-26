@@ -40,6 +40,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSwatch().copyWith(
         primary: BasicStyleUtils().allColor,
       )),
+      initialRoute: '/',
       onGenerateRoute: RouteGenerator.generateRoute,
       home: SplashScreen.navigate(
         name: 'res/rive/todorive.riv',

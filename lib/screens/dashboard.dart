@@ -49,20 +49,25 @@ class _DashboardState extends State<Dashboard> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            DrawerHeader(
-              padding: const EdgeInsets.fromLTRB(0, 0, 0, 2),
-              child: const SizedBox(),
-              decoration: BoxDecoration(
-                  image: imageUrl == ""
-                      ? const DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage("res/images/defaultImage.jpg"))
-                      : DecorationImage(
-                          fit: BoxFit.cover, image: NetworkImage(imageUrl))),
-            ),
+            imageUrl == ""
+                ? const SizedBox(
+                    height: 200,
+                    width: double.infinity,
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  )
+                : DrawerHeader(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 2),
+                    child: const SizedBox(),
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.cover, image: NetworkImage(imageUrl))),
+                  ),
             DashboardUtils().listTileStyle("Done tasks", () {}),
             DashboardUtils().listTileStyle("Settings", () {}),
-            DashboardUtils().listTileStyle("Logout", () {}),
+            DashboardUtils().listTileStyle(
+                "Logout", () => DashboardUtils().logoutFunction(context)),
           ],
         ),
       ),

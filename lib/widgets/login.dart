@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:todo/screens/dashboard.dart';
 import 'package:todo/utils/form_utils.dart';
 import 'package:todo/utils/security_utils.dart';
@@ -29,7 +28,8 @@ class LoginWidget extends StatelessWidget {
       if (_formKey.currentState!.validate()) {
         _formKey.currentState!.save();
         await FirebaseAuth.instance
-            .signInWithEmailAndPassword(email: _email, password: _password)
+            .signInWithEmailAndPassword(
+                email: _email.trim(), password: _password.trim())
             .then((value) {
           storeUserName(value.user!.uid);
           SecureStorage.setPassword(_password);
@@ -56,6 +56,7 @@ class LoginWidget extends StatelessWidget {
             TextFormField(
               decoration: FormUtils().formDecoration("Password"),
               validator: (txt) => FormUtils().passwordValidate(txt!),
+              obscureText: true,
               onSaved: (passwordText) {
                 _password = passwordText!;
               },
