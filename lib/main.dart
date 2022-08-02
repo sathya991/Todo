@@ -6,10 +6,13 @@ import 'package:provider/provider.dart';
 import 'package:rive_splash_screen/rive_splash_screen.dart';
 import 'package:todo/providers/image_provider.dart';
 import 'package:todo/providers/login_signup_provider.dart';
+import 'package:todo/providers/prof_pic_provider.dart';
+import 'package:todo/providers/task_provider.dart';
 import 'package:todo/screens/dashboard.dart';
 import 'package:todo/screens/login_signup.dart';
-import 'package:todo/utils/basic_style_utils.dart';
+import 'package:todo/utils/basic_utils.dart';
 import 'package:todo/utils/router_utils.dart';
+import 'package:todo/widgets/task_list.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +24,13 @@ Future main() async {
     ),
     ChangeNotifierProvider<RandomImageProvider>(
       create: (_) => RandomImageProvider(),
-    )
+    ),
+    ChangeNotifierProvider<ProfPicProvider>(
+      create: (_) => ProfPicProvider(),
+    ),
+    ChangeNotifierProvider<TaskProvider>(
+      create: (_) => TaskProvider(),
+    ),
   ], child: const MyApp()));
 }
 
@@ -38,7 +47,7 @@ class MyApp extends StatelessWidget {
       title: 'Todo',
       theme: ThemeData(
           colorScheme: ColorScheme.fromSwatch().copyWith(
-        primary: BasicStyleUtils().allColor,
+        primary: BasicUtils().allColor,
       )),
       initialRoute: '/',
       onGenerateRoute: RouteGenerator.generateRoute,
@@ -48,7 +57,7 @@ class MyApp extends StatelessWidget {
             ? const Dashboard()
             : LoginSignupScreen(),
         until: () => Future.delayed(const Duration(seconds: 3)),
-        backgroundColor: BasicStyleUtils().allColor,
+        backgroundColor: BasicUtils().allColor,
         loopAnimation: "Animation 1",
       ),
     );

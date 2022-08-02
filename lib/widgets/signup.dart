@@ -26,7 +26,8 @@ class SignupWidget extends StatelessWidget {
             await FirebaseFirestore.instance
                 .collection('users')
                 .doc(value.user!.uid)
-                .set({'userName': _userName, 'email': _email});
+                .set(
+                    {'userName': _userName, 'email': _email, 'profPicUrl': ""});
           }).then((value) async {
             SecureStorage.setUserName(_userName);
             SecureStorage.setPassword(_password);

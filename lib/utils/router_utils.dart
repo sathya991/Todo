@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo/screens/dashboard.dart';
 import 'package:todo/screens/login_signup.dart';
+import 'package:todo/widgets/photo_viewer.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -10,6 +11,11 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => LoginSignupScreen());
       case Dashboard.dashboardRoute:
         return MaterialPageRoute(builder: (context) => const Dashboard());
+      case PhotoViewer.photoViewerRoute:
+        return MaterialPageRoute(
+            builder: (context) => PhotoViewer(
+                  imageUrl: args,
+                ));
       default:
         return _errorRoute();
     }

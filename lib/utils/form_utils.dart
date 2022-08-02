@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:todo/utils/basic_style_utils.dart';
+import 'package:todo/utils/basic_utils.dart';
 
 class FormUtils {
   formDecoration(String hintText) {
@@ -13,7 +13,7 @@ class FormUtils {
       hintText: hintText,
       hintStyle: GoogleFonts.rubik(fontSize: 17, fontWeight: FontWeight.w400),
       focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(width: 2, color: BasicStyleUtils().allColor),
+          borderSide: BorderSide(width: 2, color: BasicUtils().allColor),
           borderRadius: BorderRadius.circular(14)),
     );
   }
@@ -21,6 +21,13 @@ class FormUtils {
   elevatedButtonStyle() {
     return ElevatedButton.styleFrom(
         textStyle: GoogleFonts.rubik(fontSize: 17),
+        padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)));
+  }
+
+  reverseElevatedButtonStyle() {
+    return ElevatedButton.styleFrom(
+        primary: Colors.white,
         padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)));
   }

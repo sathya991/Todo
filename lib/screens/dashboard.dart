@@ -1,14 +1,17 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:todo/providers/image_provider.dart';
-import 'package:todo/utils/basic_style_utils.dart';
+import 'package:todo/providers/login_signup_provider.dart';
+import 'package:todo/providers/prof_pic_provider.dart';
+import 'package:todo/utils/basic_utils.dart';
 import 'package:todo/utils/dashboard_utils.dart';
 import 'package:todo/utils/security_utils.dart';
 import 'package:provider/provider.dart';
+import 'package:todo/widgets/option_picker.dart';
+import 'package:todo/widgets/prof_pic.dart';
+import 'package:todo/widgets/task_list.dart';
+import 'package:todo/widgets/text_show.dart';
 
 class Dashboard extends StatefulWidget {
   static const String dashboardRoute = '/dashboard-route';
@@ -23,19 +26,17 @@ class _DashboardState extends State<Dashboard> {
   @override
   void initState() {
     super.initState();
-    init();
-  }
-
-  String userName = "";
-  Future init() async {
-    userName = await SecureStorage.getUserName() ?? '';
+    context.read<LoginSignupProvider>().getUserName();
+    context.read<ProfPicProvider>().downloadProfPic();
+    // context
+    //     .read<ProfPicProvider>()
+    //     .imageToFile("res/images", "defaultProf", "jpg");
   }
 
   @override
   Widget build(BuildContext context) {
-    String imageUrl = context.watch<RandomImageProvider>().imageUrl;
     return AdvancedDrawer(
-      backdropColor: BasicStyleUtils().allColor,
+      backdropColor: BasicUtils().allColor,
       controller: _advancedDrawerController,
       animationCurve: Curves.easeInOut,
       animationDuration: const Duration(milliseconds: 200),
@@ -49,7 +50,7 @@ class _DashboardState extends State<Dashboard> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            imageUrl == ""
+            context.watch<RandomImageProvider>().imageUrl == ""
                 ? const SizedBox(
                     height: 200,
                     width: double.infinity,
@@ -62,7 +63,10 @@ class _DashboardState extends State<Dashboard> {
                     child: const SizedBox(),
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            fit: BoxFit.cover, image: NetworkImage(imageUrl))),
+                            fit: BoxFit.cover,
+                            image: NetworkImage(context
+                                .watch<RandomImageProvider>()
+                                .imageUrl))),
                   ),
             DashboardUtils().listTileStyle("Done tasks", () {}),
             DashboardUtils().listTileStyle("Settings", () {}),
@@ -72,7 +76,10 @@ class _DashboardState extends State<Dashboard> {
         ),
       ),
       child: Scaffold(
+        backgroundColor: BasicUtils().allColor,
         appBar: AppBar(
+          centerTitle: false,
+          elevation: 0,
           title: const Text("Todo"),
           leading: IconButton(
             onPressed: _handleMenuButtonPressed,
@@ -90,8 +97,27 @@ class _DashboardState extends State<Dashboard> {
             ),
           ),
         ),
-        body: const Center(
-          child: Text("Dashboard"),
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(30, 20, 0, 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  ProfPic(),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  TextShow(),
+                ],
+              ),
+            ),
+            const TaskList(),
+            const SizedBox(
+              height: 40,
+            ),
+            const OptionPicker(),
+          ],
         ),
       ),
     );

@@ -20,7 +20,11 @@ class LoginWidget extends StatelessWidget {
           .doc(uid)
           .get()
           .then((value) {
-        SecureStorage.setUserName(value.get('userName'));
+        SecureStorage.setUserName(value.get('userName')).then((value) {
+          SecureStorage.setPassword(_password);
+          Navigator.of(context).pushNamedAndRemoveUntil(
+              Dashboard.dashboardRoute, (route) => false);
+        });
       });
     }
 
@@ -32,9 +36,6 @@ class LoginWidget extends StatelessWidget {
                 email: _email.trim(), password: _password.trim())
             .then((value) {
           storeUserName(value.user!.uid);
-          SecureStorage.setPassword(_password);
-          Navigator.of(context).pushNamedAndRemoveUntil(
-              Dashboard.dashboardRoute, (route) => false);
         });
       }
     }
