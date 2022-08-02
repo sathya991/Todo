@@ -23,48 +23,51 @@ class OptionPicker extends StatelessWidget {
           endIndent: 100,
           indent: 100,
         ),
-        ExpandChild(
-            arrowColor: Colors.white,
-            child: Column(
-              children: [
-                ElevatedButton(
-                  style: FormUtils().urgentButtonStyle(),
-                  onPressed: () {
-                    Navigator.of(context).pushNamed(AddTask.addTaskRoute,
-                        arguments: AddTask(BasicUtils().urgentColor,
-                            Colors.white, "Urgent", "urgent"));
-                  },
-                  child: Text(
-                    "Urgent",
-                    style: BasicUtils().buttonTextStyle,
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+          child: ExpandChild(
+              arrowColor: Colors.white,
+              child: Column(
+                children: [
+                  ElevatedButton(
+                    style: FormUtils().urgentButtonStyle(),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(AddTask.addTaskRoute,
+                          arguments: AddTask(BasicUtils().urgentColor,
+                              Colors.white, "Urgent", "urgent"));
+                    },
+                    child: Text(
+                      "Urgent",
+                      style: BasicUtils().buttonTextStyle,
+                    ),
                   ),
-                ),
-                ElevatedButton(
-                  style: FormUtils().mediumButtonStyle(),
-                  onPressed: () {
-                    Navigator.of(context).pushNamed(AddTask.addTaskRoute,
-                        arguments: AddTask(BasicUtils().mediumColor,
-                            Colors.black, "Not so urgent", "medium"));
-                  },
-                  child: Text(
-                    "Not so urgent",
-                    style: BasicUtils().mediumButtonTextStyle,
+                  ElevatedButton(
+                    style: FormUtils().mediumButtonStyle(),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(AddTask.addTaskRoute,
+                          arguments: AddTask(BasicUtils().mediumColor,
+                              Colors.black, "Not so urgent", "medium"));
+                    },
+                    child: Text(
+                      "Not so urgent",
+                      style: BasicUtils().mediumButtonTextStyle,
+                    ),
                   ),
-                ),
-                ElevatedButton(
-                  style: FormUtils().leisureButtonStyle(),
-                  onPressed: () {
-                    Navigator.of(context).pushNamed(AddTask.addTaskRoute,
-                        arguments: AddTask(BasicUtils().leisureColor,
-                            Colors.white, "Leisure", "leisure"));
-                  },
-                  child: Text(
-                    "Leisure",
-                    style: BasicUtils().buttonTextStyle,
+                  ElevatedButton(
+                    style: FormUtils().leisureButtonStyle(),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(AddTask.addTaskRoute,
+                          arguments: AddTask(BasicUtils().leisureColor,
+                              Colors.white, "Leisure", "leisure"));
+                    },
+                    child: Text(
+                      "Leisure",
+                      style: BasicUtils().buttonTextStyle,
+                    ),
                   ),
-                ),
-              ],
-            )),
+                ],
+              )),
+        ),
       ],
     );
   }

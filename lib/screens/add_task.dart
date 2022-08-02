@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:grouped_list/grouped_list.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/providers/task_provider.dart';
+import 'package:todo/screens/dashboard.dart';
 import 'package:todo/utils/basic_utils.dart';
 
 class AddTask extends StatelessWidget {
@@ -46,10 +47,15 @@ class AddTask extends StatelessWidget {
                             .doc(BasicUtils().curUserUid)
                             .collection(firebaseCollectionString)
                             .doc()
-                            .set({'task': tasks[i], 'time': DateTime.now()});
-                        context.read<TaskProvider>().clearCurList();
-                        Navigator.of(context).pop();
+                            .set({
+                          'task': tasks[i],
+                          'time': DateTime.now(),
+                          'type': firebaseCollectionString
+                        });
                       }
+                      context.read<TaskProvider>().clearCurList();
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                          Dashboard.dashboardRoute, (route) => false);
                     }
                   },
                   child: Text(

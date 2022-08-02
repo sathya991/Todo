@@ -4,6 +4,7 @@ import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:todo/providers/image_provider.dart';
 import 'package:todo/providers/login_signup_provider.dart';
 import 'package:todo/providers/prof_pic_provider.dart';
+import 'package:todo/providers/task_provider.dart';
 import 'package:todo/utils/basic_utils.dart';
 import 'package:todo/utils/dashboard_utils.dart';
 import 'package:todo/utils/security_utils.dart';
@@ -28,9 +29,9 @@ class _DashboardState extends State<Dashboard> {
     super.initState();
     context.read<LoginSignupProvider>().getUserName();
     context.read<ProfPicProvider>().downloadProfPic();
-    // context
-    //     .read<ProfPicProvider>()
-    //     .imageToFile("res/images", "defaultProf", "jpg");
+    context.read<TaskProvider>().getUrgentTasks();
+    context.read<TaskProvider>().getMediumTasks();
+    context.read<TaskProvider>().getLeisureTasks();
   }
 
   @override
@@ -112,7 +113,7 @@ class _DashboardState extends State<Dashboard> {
                 ],
               ),
             ),
-            const TaskList(),
+            const Expanded(child: TaskList()),
             const SizedBox(
               height: 40,
             ),
