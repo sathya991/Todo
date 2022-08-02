@@ -13,7 +13,7 @@ import 'package:todo/utils/firebase_storage_utils.dart';
 class ProfPicProvider extends ChangeNotifier {
   String _profPicUrl = "";
   String curUserUid = BasicUtils().curUserUid;
-  dynamic _profPic = const AssetImage("res/images/defaultProf.jpg");
+  dynamic _profPic = const AssetImage("res/images/defaultProf.png");
   dynamic get profPic => _profPic;
   File? _profPicFile;
 

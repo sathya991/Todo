@@ -12,9 +12,7 @@ class ProfPic extends StatelessWidget {
     dynamic profPic = context.watch<ProfPicProvider>().profPic;
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed(PhotoViewer.photoViewerRoute,
-            arguments:
-                "https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2835&q=80");
+        Navigator.of(context).pushNamed(PhotoViewer.photoViewerRoute);
       },
       child: CircleAvatar(
           backgroundColor: BasicUtils().allColor,

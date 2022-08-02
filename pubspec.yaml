@@ -56,6 +56,7 @@ dependencies:
   path_provider: ^2.0.11
   open_file: ^3.2.1
   expand_widget: ^2.1.0
+  grouped_list: ^5.1.2
 
 flutter_native_splash:
   color: "#8555f6"
@@ -93,7 +94,7 @@ flutter:
   assets:
     - res/rive/todorive.riv
     - res/gifs/loginsignupback.gif
-    - res/images/defaultProf.jpg
+    - res/images/defaultProf.png
     - res/gifs/emptyList.gif
 
   #   - images/a_dot_burr.jpeg

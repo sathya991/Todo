@@ -25,9 +25,23 @@ class FormUtils {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)));
   }
 
-  reverseElevatedButtonStyle() {
+  mediumButtonStyle() {
     return ElevatedButton.styleFrom(
-        primary: Colors.white,
+        primary: BasicUtils().mediumColor,
+        padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)));
+  }
+
+  urgentButtonStyle() {
+    return ElevatedButton.styleFrom(
+        primary: BasicUtils().urgentColor,
+        padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)));
+  }
+
+  leisureButtonStyle() {
+    return ElevatedButton.styleFrom(
+        primary: BasicUtils().leisureColor,
         padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)));
   }

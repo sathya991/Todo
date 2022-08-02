@@ -10,8 +10,7 @@ import 'package:todo/widgets/prof_pic.dart';
 
 class PhotoViewer extends StatelessWidget {
   static const String photoViewerRoute = "/photo-viewer-route";
-  const PhotoViewer({Key? key, this.imageUrl}) : super(key: key);
-  final imageUrl;
+  const PhotoViewer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

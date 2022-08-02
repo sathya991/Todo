@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo/screens/add_task.dart';
 import 'package:todo/screens/dashboard.dart';
 import 'package:todo/screens/login_signup.dart';
 import 'package:todo/widgets/photo_viewer.dart';
@@ -12,10 +13,13 @@ class RouteGenerator {
       case Dashboard.dashboardRoute:
         return MaterialPageRoute(builder: (context) => const Dashboard());
       case PhotoViewer.photoViewerRoute:
-        return MaterialPageRoute(
-            builder: (context) => PhotoViewer(
-                  imageUrl: args,
-                ));
+        return MaterialPageRoute(builder: (context) => const PhotoViewer());
+      case AddTask.addTaskRoute:
+        return MaterialPageRoute(builder: (context) {
+          AddTask argument = args as AddTask;
+          return AddTask(argument.color, argument.contrastColor,
+              argument.appBarString, argument.firebaseCollectionString);
+        });
       default:
         return _errorRoute();
     }

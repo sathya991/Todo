@@ -1,6 +1,7 @@
 import 'package:expand_widget/expand_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:todo/screens/add_task.dart';
 import 'package:todo/utils/basic_utils.dart';
 import 'package:todo/utils/form_utils.dart';
 
@@ -27,27 +28,39 @@ class OptionPicker extends StatelessWidget {
             child: Column(
               children: [
                 ElevatedButton(
-                  style: FormUtils().reverseElevatedButtonStyle(),
-                  onPressed: () {},
+                  style: FormUtils().urgentButtonStyle(),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(AddTask.addTaskRoute,
+                        arguments: AddTask(BasicUtils().urgentColor,
+                            Colors.white, "Urgent", "urgent"));
+                  },
                   child: Text(
                     "Urgent",
-                    style: BasicUtils().reverseButtonTextStyle,
+                    style: BasicUtils().buttonTextStyle,
                   ),
                 ),
                 ElevatedButton(
-                  style: FormUtils().reverseElevatedButtonStyle(),
-                  onPressed: () {},
+                  style: FormUtils().mediumButtonStyle(),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(AddTask.addTaskRoute,
+                        arguments: AddTask(BasicUtils().mediumColor,
+                            Colors.black, "Not so urgent", "medium"));
+                  },
                   child: Text(
                     "Not so urgent",
-                    style: BasicUtils().reverseButtonTextStyle,
+                    style: BasicUtils().mediumButtonTextStyle,
                   ),
                 ),
                 ElevatedButton(
-                  style: FormUtils().reverseElevatedButtonStyle(),
-                  onPressed: () {},
+                  style: FormUtils().leisureButtonStyle(),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(AddTask.addTaskRoute,
+                        arguments: AddTask(BasicUtils().leisureColor,
+                            Colors.white, "Leisure", "leisure"));
+                  },
                   child: Text(
                     "Leisure",
-                    style: BasicUtils().reverseButtonTextStyle,
+                    style: BasicUtils().buttonTextStyle,
                   ),
                 ),
               ],
