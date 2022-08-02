@@ -49,7 +49,7 @@ class TaskList extends StatelessWidget {
                   .toDate()
                   .toString());
           return SizedBox(
-            width: 250,
+            width: 300,
             child: Card(
               color: curColor,
               child: Padding(
@@ -94,7 +94,7 @@ class TaskList extends StatelessWidget {
           );
         },
         options: CarouselOptions(
-            height: 250,
+            height: 300,
             enableInfiniteScroll: false,
             viewportFraction: 0.7,
             enlargeCenterPage: true));

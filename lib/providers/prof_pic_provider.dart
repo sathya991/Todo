@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -15,9 +16,7 @@ class ProfPicProvider extends ChangeNotifier {
   String curUserUid = BasicUtils().curUserUid;
   dynamic _profPic = const AssetImage("res/images/defaultProf.png");
   dynamic get profPic => _profPic;
-  File? _profPicFile;
 
-  dynamic get profPicFile => _profPicFile;
   downloadProfPic() {
     FirebaseFirestore.instance
         .collection('users')
@@ -69,19 +68,22 @@ class ProfPicProvider extends ChangeNotifier {
     });
   }
 
-  // imageToFile(String path, String imageName, String ext) async {
-  //   var bytes = await rootBundle.load('$path/$imageName.$ext');
-  //   String tempPath = (await getTemporaryDirectory()).path;
-  //   File file = File('$tempPath/profile.png');
-  //   await file
-  //       .writeAsBytes(
-  //           bytes.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes))
-  //       .then((value) {
-  //     _profPicFile = file;
-  //   });
-  // }
-
-  // updateProfPicFile(){
-
-  // }
+  deleteProfPic() async {
+    final desertRef = FirebaseStorage.instance.ref('profPics/$curUserUid');
+    await desertRef.delete().then((value) {
+      FirebaseFirestore.instance
+          .collection('users')
+          .doc(curUserUid)
+          .get()
+          .then((value) async {
+        value.data()!.update('profPicUrl', (value) => "");
+        _profPicUrl = "";
+        _profPic = const AssetImage("res/images/defaultProf.png");
+        final appStorage = await getApplicationDocumentsDirectory();
+        final file = File('${appStorage.path}/"profPic"');
+        file.delete();
+        notifyListeners();
+      });
+    });
+  }
 }

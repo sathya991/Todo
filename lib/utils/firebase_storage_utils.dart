@@ -20,9 +20,4 @@ class FirebaseStorageUtils {
       });
     });
   }
-
-  deleteProfPic() async {
-    final desertRef = FirebaseStorage.instance.ref('profPics/$curUserUid');
-    await desertRef.delete();
-  }
 }

@@ -5,6 +5,7 @@ import 'package:photo_view/photo_view.dart';
 import 'package:todo/providers/prof_pic_provider.dart';
 import 'package:todo/utils/basic_utils.dart';
 import 'package:provider/provider.dart';
+import 'package:todo/utils/firebase_storage_utils.dart';
 import 'package:todo/utils/form_utils.dart';
 import 'package:todo/widgets/prof_pic.dart';
 
@@ -70,9 +71,7 @@ class PhotoViewer extends StatelessWidget {
       ),
       body: Column(
         children: [
-          SizedBox(
-            height: 750,
-            width: 500,
+          Expanded(
             child: PhotoView(
               imageProvider: context.watch<ProfPicProvider>().profPic,
             ),
@@ -80,18 +79,20 @@ class PhotoViewer extends StatelessWidget {
           const SizedBox(
             height: 5,
           ),
-          // ElevatedButton(
-          //     style: FormUtils().elevatedButtonStyle(),
-          //     onPressed: () {
-          //       context.read<ProfPicProvider>()
-          //       context
-          //           .read<ProfPicProvider>()
-          //           .cropimage(context.read<ProfPicProvider>().profPicFile);
-          //     },
-          //     child: Text(
-          //       "Crop",
-          //       style: GoogleFonts.rubik(),
-          //     )),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 0, 30),
+            child: ElevatedButton(
+                style: FormUtils().elevatedButtonStyle(),
+                onPressed: context.watch<ProfPicProvider>().profPic ==
+                        const AssetImage("res/images/defaultProf.png")
+                    ? () {}
+                    : () {
+                        context.read<ProfPicProvider>().deleteProfPic();
+                      },
+                child: const Text(
+                  "Remove Profile Picture",
+                )),
+          ),
         ],
       ),
     );
