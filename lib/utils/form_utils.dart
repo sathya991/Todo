@@ -13,7 +13,7 @@ class FormUtils {
       ),
       hintText: hintText,
       hintStyle:
-          GoogleFonts.rubik(fontSize: 0.28.dp, fontWeight: FontWeight.w400),
+          GoogleFonts.rubik(fontSize: 18.sp, fontWeight: FontWeight.w400),
       focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(width: 2, color: BasicUtils().allColor),
           borderRadius: BorderRadius.circular(1.h)),
@@ -22,7 +22,7 @@ class FormUtils {
 
   elevatedButtonStyle() {
     return ElevatedButton.styleFrom(
-        textStyle: GoogleFonts.rubik(fontSize: 0.28.dp),
+        textStyle: GoogleFonts.rubik(fontSize: 18.sp),
         padding: EdgeInsets.fromLTRB(4.2.w, 1.h, 4.2.w, 1.h),
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(1.h)));

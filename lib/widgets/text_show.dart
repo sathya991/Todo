@@ -16,7 +16,7 @@ class TextShow extends StatelessWidget {
           "Hey ${context.watch<LoginSignupProvider>().userName}, You have ${context.watch<TaskProvider>().tasks.length} tasks left",
           style: GoogleFonts.rubik(
               color: Colors.white,
-              fontSize: 0.28.dp,
+              fontSize: 17.sp,
               fontWeight: FontWeight.w500)),
     );
   }

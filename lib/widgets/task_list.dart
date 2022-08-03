@@ -18,13 +18,15 @@ class TaskList extends StatelessWidget {
         children: [
           Image(
             image: const AssetImage('res/gifs/emptyList.gif'),
-            height: 40.h,
+            height: 35.h,
             width: 80.w,
           ),
           Text(
             "No tasks yet",
             style: GoogleFonts.rubik(
-                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                color: Colors.white,
+                fontSize: 18.sp,
+                fontWeight: FontWeight.bold),
           )
         ],
       );
@@ -62,7 +64,7 @@ class TaskList extends StatelessWidget {
                     children: [
                       Text(BasicUtils().dtToString(dt),
                           style: GoogleFonts.rubik(
-                              color: textColor, fontSize: 0.28.dp)),
+                              color: textColor, fontSize: 18.sp)),
                       const SizedBox(
                         height: 20,
                       ),
@@ -70,13 +72,13 @@ class TaskList extends StatelessWidget {
                         child: Text(
                             context.watch<TaskProvider>().tasks[itemIndex][0],
                             style: GoogleFonts.rubik(
-                                color: textColor, fontSize: 0.28.dp)),
+                                color: textColor, fontSize: 19.sp)),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           IconButton(
-                              iconSize: 0.36.dp,
+                              iconSize: 22.sp,
                               onPressed: () {
                                 context.read<TaskProvider>().deleteTask(context
                                     .read<TaskProvider>()
@@ -87,7 +89,7 @@ class TaskList extends StatelessWidget {
                                 color: textColor,
                               )),
                           IconButton(
-                              iconSize: 0.36.dp,
+                              iconSize: 22.sp,
                               onPressed: () {
                                 context.read<TaskProvider>().taskDone(context
                                     .read<TaskProvider>()

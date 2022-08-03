@@ -67,14 +67,14 @@ class _DoneTasksState extends State<DoneTasks>
           centerTitle: false,
           title: Text(
             "Done tasks",
-            style: GoogleFonts.rubik(fontSize: 0.3.dp),
+            style: GoogleFonts.rubik(fontSize: 18.sp),
           ),
           bottom: TabBar(controller: _controller, tabs: [
             Text(
               "Urgent",
               style: GoogleFonts.rubik(
                   color: contrastColor,
-                  fontSize: 0.27.dp,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
@@ -84,7 +84,7 @@ class _DoneTasksState extends State<DoneTasks>
                 "Not so Important",
                 style: GoogleFonts.rubik(
                     color: contrastColor,
-                    fontSize: 0.27.dp,
+                    fontSize: 16.sp,
                     fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
@@ -93,7 +93,7 @@ class _DoneTasksState extends State<DoneTasks>
               "Leisure",
               style: GoogleFonts.rubik(
                   color: contrastColor,
-                  fontSize: 0.27.dp,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             )

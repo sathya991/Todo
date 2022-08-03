@@ -16,7 +16,7 @@ class OptionPicker extends StatelessWidget {
         Text(
           "Add task",
           style: GoogleFonts.rubik(
-              fontSize: 0.33.dp,
+              fontSize: 20.sp,
               color: Colors.white,
               fontWeight: FontWeight.bold),
         ),

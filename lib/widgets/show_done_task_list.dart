@@ -37,7 +37,7 @@ class ShowEachTaskList extends StatelessWidget {
                         "Task:",
                         style: GoogleFonts.rubik(
                             fontWeight: FontWeight.bold,
-                            fontSize: 0.28.dp,
+                            fontSize: 16.sp,
                             color: textColor),
                       ),
                       SizedBox(
@@ -46,7 +46,7 @@ class ShowEachTaskList extends StatelessWidget {
                       Text(
                         curTask['task'],
                         style: GoogleFonts.rubik(
-                            fontSize: 0.28.dp, color: textColor),
+                            fontSize: 16.sp, color: textColor),
                       ),
                       SizedBox(
                         height: 0.4.h,
@@ -55,7 +55,7 @@ class ShowEachTaskList extends StatelessWidget {
                         "Time:",
                         style: GoogleFonts.rubik(
                             fontWeight: FontWeight.bold,
-                            fontSize: 0.28.dp,
+                            fontSize: 16.sp,
                             color: textColor),
                       ),
                       SizedBox(
@@ -64,7 +64,7 @@ class ShowEachTaskList extends StatelessWidget {
                       Text(
                         BasicUtils().dtToString(curTime),
                         style: GoogleFonts.rubik(
-                            fontSize: 0.26.dp, color: textColor),
+                            fontSize: 15.sp, color: textColor),
                       )
                     ],
                   ),
@@ -79,7 +79,7 @@ class ShowEachTaskList extends StatelessWidget {
                         "Not done",
                         style: GoogleFonts.rubik(
                             color: contrastColor,
-                            fontSize: 0.26.dp,
+                            fontSize: 16.sp,
                             fontWeight: FontWeight.w500),
                       )),
                 ],

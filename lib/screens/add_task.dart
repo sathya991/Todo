@@ -67,7 +67,7 @@ class AddTask extends StatelessWidget {
                     "Add",
                     style: GoogleFonts.rubik(
                       color: color,
-                      fontSize: 0.275.dp,
+                      fontSize: 17.sp,
                     ),
                   )),
             )
@@ -89,7 +89,9 @@ class AddTask extends StatelessWidget {
                               Text(
                                 tasks[index],
                                 style: GoogleFonts.rubik(
-                                    color: color, fontSize: 0.28.dp),
+                                  color: color,
+                                  fontSize: 17.sp,
+                                ),
                               ),
                               IconButton(
                                   onPressed: () {
@@ -100,7 +102,7 @@ class AddTask extends StatelessWidget {
                                   icon: Icon(
                                     Icons.delete,
                                     color: color,
-                                    size: 0.34.dp,
+                                    size: 20.sp,
                                   ))
                             ],
                           ),
@@ -117,14 +119,18 @@ class AddTask extends StatelessWidget {
                   Flexible(
                     child: TextField(
                         controller: fieldText,
-                        style:
-                            GoogleFonts.rubik(color: color, fontSize: 0.28.dp),
+                        style: GoogleFonts.rubik(
+                          color: color,
+                          fontSize: 17.sp,
+                        ),
                         decoration: InputDecoration(
                             contentPadding:
                                 EdgeInsets.fromLTRB(5.w, 1.h, 0, 3.5.h),
                             hintText: "Enter your task",
                             hintStyle: GoogleFonts.rubik(
-                                color: color, fontSize: 0.28.dp))),
+                              color: color,
+                              fontSize: 18.sp,
+                            ))),
                   ),
                   GestureDetector(
                     onTap: () {
@@ -136,7 +142,7 @@ class AddTask extends StatelessWidget {
                       child: Icon(
                         Icons.add,
                         color: color,
-                        size: 0.35.dp,
+                        size: 20.sp,
                       ),
                     ),
                   )

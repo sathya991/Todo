@@ -12,7 +12,7 @@ class DashboardUtils {
     return ListTile(
       title: Text(
         text,
-        style: GoogleFonts.rubik(fontSize: 0.29.dp),
+        style: GoogleFonts.rubik(fontSize: 18.5.sp),
       ),
       trailing: const FaIcon(
         FontAwesomeIcons.angleRight,

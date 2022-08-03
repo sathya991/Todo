@@ -17,7 +17,7 @@ class BasicUtils {
   String get curUserUid => FirebaseAuth.instance.currentUser!.uid;
 
   TextStyle get buttonTextStyle =>
-      GoogleFonts.rubik(fontSize: 0.29.dp, color: Colors.white);
+      GoogleFonts.rubik(fontSize: 18.sp, color: Colors.white);
 
   DateTime timeStampToDT(String datetime) {
     return DateTime.parse(datetime);

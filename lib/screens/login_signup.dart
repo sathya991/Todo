@@ -38,7 +38,7 @@ class LoginSignupScreen extends StatelessWidget {
               },
               child: Text(
                 context.watch<LoginSignupProvider>().curText,
-                style: GoogleFonts.rubik(fontSize: 0.26.dp),
+                style: GoogleFonts.rubik(fontSize: 16.sp),
               ),
             ),
           ],

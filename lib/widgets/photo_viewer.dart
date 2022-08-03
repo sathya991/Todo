@@ -39,8 +39,7 @@ class PhotoViewer extends StatelessWidget {
                           Text(
                             "Gallery",
                             style: GoogleFonts.rubik(
-                                color: BasicUtils().allColor,
-                                fontSize: 0.28.dp),
+                                color: BasicUtils().allColor, fontSize: 18.sp),
                           ),
                           SizedBox(
                             width: 1.5.w,
@@ -57,7 +56,7 @@ class PhotoViewer extends StatelessWidget {
                           Text("Camera",
                               style: GoogleFonts.rubik(
                                   color: BasicUtils().allColor,
-                                  fontSize: 0.28.dp)),
+                                  fontSize: 18.sp)),
                           SizedBox(
                             width: 1.5.w,
                           ),
@@ -83,7 +82,7 @@ class PhotoViewer extends StatelessWidget {
             height: 1.h,
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 0, 0, 4.h),
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 2.h),
             child: ElevatedButton(
                 style: FormUtils().elevatedButtonStyle(),
                 onPressed: context.watch<ProfPicProvider>().profPic ==
