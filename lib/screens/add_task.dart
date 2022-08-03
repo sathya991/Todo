@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grouped_list/grouped_list.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:todo/providers/task_provider.dart';
 import 'package:todo/screens/dashboard.dart';
 import 'package:todo/utils/basic_utils.dart';
@@ -35,12 +36,12 @@ class AddTask extends StatelessWidget {
           centerTitle: false,
           actions: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(1.h),
               child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       primary: contrastColor,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10))),
+                          borderRadius: BorderRadius.circular(1.h))),
                   onPressed: () async {
                     if (tasks.isNotEmpty) {
                       for (int i = 0; i < tasks.length; i++) {
@@ -66,7 +67,7 @@ class AddTask extends StatelessWidget {
                     "Add",
                     style: GoogleFonts.rubik(
                       color: color,
-                      fontSize: 16,
+                      fontSize: 0.275.dp,
                     ),
                   )),
             )
@@ -81,17 +82,14 @@ class AddTask extends StatelessWidget {
                     itemBuilder: ((context, index) {
                       return Card(
                         child: Padding(
-                          padding: const EdgeInsets.all(15.0),
+                          padding: EdgeInsets.all(1.5.h),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
                                 tasks[index],
-                                style: firebaseCollectionString == "medium"
-                                    ? GoogleFonts.rubik(
-                                        color: contrastColor, fontSize: 18)
-                                    : GoogleFonts.rubik(
-                                        color: color, fontSize: 18),
+                                style: GoogleFonts.rubik(
+                                    color: color, fontSize: 0.28.dp),
                               ),
                               IconButton(
                                   onPressed: () {
@@ -99,22 +97,18 @@ class AddTask extends StatelessWidget {
                                         .read<TaskProvider>()
                                         .removeTask(index);
                                   },
-                                  icon: firebaseCollectionString == "medium"
-                                      ? Icon(
-                                          Icons.delete,
-                                          color: contrastColor,
-                                        )
-                                      : Icon(
-                                          Icons.delete,
-                                          color: color,
-                                        ))
+                                  icon: Icon(
+                                    Icons.delete,
+                                    color: color,
+                                    size: 0.34.dp,
+                                  ))
                             ],
                           ),
                         ),
                       );
                     }))),
-            const Divider(
-              thickness: 2,
+            Divider(
+              thickness: 0.2.h,
             ),
             Container(
               color: Colors.white10,
@@ -123,19 +117,14 @@ class AddTask extends StatelessWidget {
                   Flexible(
                     child: TextField(
                         controller: fieldText,
-                        style: firebaseCollectionString == "medium"
-                            ? GoogleFonts.rubik(
-                                color: contrastColor, fontSize: 18)
-                            : GoogleFonts.rubik(color: color, fontSize: 18),
+                        style:
+                            GoogleFonts.rubik(color: color, fontSize: 0.28.dp),
                         decoration: InputDecoration(
                             contentPadding:
-                                const EdgeInsets.fromLTRB(20, 10, 0, 30),
+                                EdgeInsets.fromLTRB(5.w, 1.h, 0, 3.5.h),
                             hintText: "Enter your task",
-                            hintStyle: firebaseCollectionString == "medium"
-                                ? GoogleFonts.rubik(
-                                    color: contrastColor, fontSize: 18)
-                                : GoogleFonts.rubik(
-                                    color: color, fontSize: 18))),
+                            hintStyle: GoogleFonts.rubik(
+                                color: color, fontSize: 0.28.dp))),
                   ),
                   GestureDetector(
                     onTap: () {
@@ -143,16 +132,12 @@ class AddTask extends StatelessWidget {
                       fieldText.clear();
                     },
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 10, 20, 30),
-                      child: firebaseCollectionString == "medium"
-                          ? Icon(
-                              Icons.add,
-                              color: contrastColor,
-                            )
-                          : Icon(
-                              Icons.add,
-                              color: color,
-                            ),
+                      padding: EdgeInsets.fromLTRB(0, 1.h, 5.w, 3.5.h),
+                      child: Icon(
+                        Icons.add,
+                        color: color,
+                        size: 0.35.dp,
+                      ),
                     ),
                   )
                 ],

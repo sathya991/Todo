@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:todo/widgets/login.dart';
 import 'package:todo/providers/login_signup_provider.dart';
 import 'package:provider/provider.dart';
@@ -17,15 +18,15 @@ class LoginSignupScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-              height: 400,
-              width: double.infinity,
+              height: 50.h,
+              width: 95.w,
               decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage("res/gifs/loginsignupback.gif"),
                       fit: BoxFit.contain)),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(15, 40, 15, 0),
+              padding: EdgeInsets.fromLTRB(4.w, 4.h, 4.w, 0.h),
               child: context.watch<LoginSignupProvider>().curWidget,
             ),
             TextButton(
@@ -37,7 +38,7 @@ class LoginSignupScreen extends StatelessWidget {
               },
               child: Text(
                 context.watch<LoginSignupProvider>().curText,
-                style: GoogleFonts.rubik(fontSize: 15),
+                style: GoogleFonts.rubik(fontSize: 0.26.dp),
               ),
             ),
           ],

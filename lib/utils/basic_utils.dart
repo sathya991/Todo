@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class BasicUtils {
   Color get allColor => const Color.fromRGBO(132, 85, 246, 1);
@@ -16,10 +17,7 @@ class BasicUtils {
   String get curUserUid => FirebaseAuth.instance.currentUser!.uid;
 
   TextStyle get buttonTextStyle =>
-      GoogleFonts.rubik(fontSize: 18, color: Colors.white);
-
-  TextStyle get mediumButtonTextStyle =>
-      GoogleFonts.rubik(fontSize: 18, color: Colors.white);
+      GoogleFonts.rubik(fontSize: 0.29.dp, color: Colors.white);
 
   DateTime timeStampToDT(String datetime) {
     return DateTime.parse(datetime);

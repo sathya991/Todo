@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:todo/providers/prof_pic_provider.dart';
 import 'package:todo/utils/basic_utils.dart';
 import 'package:todo/widgets/photo_viewer.dart';
@@ -16,7 +17,7 @@ class ProfPic extends StatelessWidget {
       },
       child: CircleAvatar(
           backgroundColor: BasicUtils().allColor,
-          radius: 35,
+          radius: 4.5.h,
           backgroundImage: context.watch<ProfPicProvider>().profPic),
     );
   }

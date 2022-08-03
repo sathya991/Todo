@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:todo/providers/task_provider.dart';
 import 'package:todo/utils/basic_utils.dart';
-import 'package:todo/widgets/show_task_list.dart';
+import 'package:todo/widgets/show_done_task_list.dart';
 import 'package:provider/provider.dart';
 
 class DoneTasks extends StatefulWidget {
@@ -19,10 +20,10 @@ class _DoneTasksState extends State<DoneTasks>
   int _selectedIndex = 0;
   Color? color = BasicUtils().urgentColor;
   Color? contrastColor = Colors.white;
+
   @override
   void initState() {
     super.initState();
-
     _controller = TabController(length: 3, vsync: this);
     context.read<TaskProvider>().getUrgentDoneTasks();
     context.read<TaskProvider>().getMediumDoneTasks();
@@ -64,13 +65,16 @@ class _DoneTasksState extends State<DoneTasks>
           backgroundColor: color,
           foregroundColor: contrastColor,
           centerTitle: false,
-          title: const Text("Done tasks"),
+          title: Text(
+            "Done tasks",
+            style: GoogleFonts.rubik(fontSize: 0.3.dp),
+          ),
           bottom: TabBar(controller: _controller, tabs: [
             Text(
               "Urgent",
               style: GoogleFonts.rubik(
                   color: contrastColor,
-                  fontSize: 16,
+                  fontSize: 0.27.dp,
                   fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
@@ -80,7 +84,7 @@ class _DoneTasksState extends State<DoneTasks>
                 "Not so Important",
                 style: GoogleFonts.rubik(
                     color: contrastColor,
-                    fontSize: 16,
+                    fontSize: 0.27.dp,
                     fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
@@ -89,7 +93,7 @@ class _DoneTasksState extends State<DoneTasks>
               "Leisure",
               style: GoogleFonts.rubik(
                   color: contrastColor,
-                  fontSize: 16,
+                  fontSize: 0.27.dp,
                   fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             )

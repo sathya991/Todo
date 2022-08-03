@@ -1,6 +1,7 @@
 import 'package:expand_widget/expand_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:todo/screens/add_task.dart';
 import 'package:todo/utils/basic_utils.dart';
 import 'package:todo/utils/form_utils.dart';
@@ -15,16 +16,18 @@ class OptionPicker extends StatelessWidget {
         Text(
           "Add task",
           style: GoogleFonts.rubik(
-              fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold),
+              fontSize: 0.33.dp,
+              color: Colors.white,
+              fontWeight: FontWeight.bold),
         ),
-        const Divider(
+        Divider(
           color: Colors.white,
-          thickness: 2,
-          endIndent: 100,
-          indent: 100,
+          thickness: 0.4.w,
+          endIndent: 25.w,
+          indent: 25.w,
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+          padding: EdgeInsets.fromLTRB(0, 0, 0, 2.h),
           child: ExpandChild(
               arrowColor: Colors.white,
               child: Column(

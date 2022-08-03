@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:todo/providers/task_provider.dart';
 import 'package:todo/utils/basic_utils.dart';
 
@@ -15,10 +16,10 @@ class TaskList extends StatelessWidget {
     if (context.watch<TaskProvider>().tasks.isEmpty) {
       return Column(
         children: [
-          const Image(
-            image: AssetImage('res/gifs/emptyList.gif'),
-            height: 350,
-            width: 350,
+          Image(
+            image: const AssetImage('res/gifs/emptyList.gif'),
+            height: 40.h,
+            width: 80.w,
           ),
           Text(
             "No tasks yet",
@@ -49,17 +50,19 @@ class TaskList extends StatelessWidget {
                   .toDate()
                   .toString());
           return SizedBox(
-            width: 300,
+            width: 70.w,
             child: Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(1.h)),
               color: curColor,
               child: Padding(
-                padding: const EdgeInsets.all(9.0),
+                padding: EdgeInsets.all(1.h),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(BasicUtils().dtToString(dt),
                           style: GoogleFonts.rubik(
-                              color: textColor, fontSize: 17)),
+                              color: textColor, fontSize: 0.28.dp)),
                       const SizedBox(
                         height: 20,
                       ),
@@ -67,13 +70,13 @@ class TaskList extends StatelessWidget {
                         child: Text(
                             context.watch<TaskProvider>().tasks[itemIndex][0],
                             style: GoogleFonts.rubik(
-                                color: textColor, fontSize: 17)),
+                                color: textColor, fontSize: 0.28.dp)),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           IconButton(
-                              iconSize: 30,
+                              iconSize: 0.36.dp,
                               onPressed: () {
                                 context.read<TaskProvider>().deleteTask(context
                                     .read<TaskProvider>()
@@ -84,7 +87,7 @@ class TaskList extends StatelessWidget {
                                 color: textColor,
                               )),
                           IconButton(
-                              iconSize: 30,
+                              iconSize: 0.36.dp,
                               onPressed: () {
                                 context.read<TaskProvider>().taskDone(context
                                     .read<TaskProvider>()
@@ -102,7 +105,7 @@ class TaskList extends StatelessWidget {
           );
         },
         options: CarouselOptions(
-            height: 300,
+            height: 34.h,
             enableInfiniteScroll: false,
             viewportFraction: 0.7,
             enlargeCenterPage: true));

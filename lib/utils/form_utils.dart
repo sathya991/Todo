@@ -1,49 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:todo/utils/basic_utils.dart';
 
 class FormUtils {
   formDecoration(String hintText) {
     return InputDecoration(
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide:
-            const BorderSide(width: 3, color: Color.fromRGBO(241, 238, 249, 1)),
+        borderRadius: BorderRadius.circular(1.h),
+        borderSide: BorderSide(
+            width: 0.8.w, color: const Color.fromRGBO(241, 238, 249, 1)),
       ),
       hintText: hintText,
-      hintStyle: GoogleFonts.rubik(fontSize: 17, fontWeight: FontWeight.w400),
+      hintStyle:
+          GoogleFonts.rubik(fontSize: 0.28.dp, fontWeight: FontWeight.w400),
       focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(width: 2, color: BasicUtils().allColor),
-          borderRadius: BorderRadius.circular(14)),
+          borderRadius: BorderRadius.circular(1.h)),
     );
   }
 
   elevatedButtonStyle() {
     return ElevatedButton.styleFrom(
-        textStyle: GoogleFonts.rubik(fontSize: 17),
-        padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)));
+        textStyle: GoogleFonts.rubik(fontSize: 0.28.dp),
+        padding: EdgeInsets.fromLTRB(4.2.w, 1.h, 4.2.w, 1.h),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(1.h)));
   }
 
   mediumButtonStyle() {
     return ElevatedButton.styleFrom(
         primary: BasicUtils().mediumColor,
-        padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)));
+        padding: EdgeInsets.fromLTRB(4.2.w, 1.h, 4.2.w, 1.h),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(1.h)));
   }
 
   urgentButtonStyle() {
     return ElevatedButton.styleFrom(
         primary: BasicUtils().urgentColor,
-        padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)));
+        padding: EdgeInsets.fromLTRB(4.2.w, 1.h, 4.2.w, 1.h),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(1.h)));
   }
 
   leisureButtonStyle() {
     return ElevatedButton.styleFrom(
         primary: BasicUtils().leisureColor,
-        padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)));
+        padding: EdgeInsets.fromLTRB(4.2.w, 1.h, 4.2.w, 1.h),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(1.h)));
   }
 
   emailValidation(String email) {

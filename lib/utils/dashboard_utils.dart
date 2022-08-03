@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:todo/utils/basic_utils.dart';
 import 'package:todo/utils/security_utils.dart';
 
@@ -11,7 +12,7 @@ class DashboardUtils {
     return ListTile(
       title: Text(
         text,
-        style: GoogleFonts.rubik(fontSize: 20),
+        style: GoogleFonts.rubik(fontSize: 0.29.dp),
       ),
       trailing: const FaIcon(
         FontAwesomeIcons.angleRight,

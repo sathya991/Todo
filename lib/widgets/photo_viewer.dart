@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:photo_view/photo_view.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:todo/providers/prof_pic_provider.dart';
 import 'package:todo/utils/basic_utils.dart';
 import 'package:provider/provider.dart';
@@ -22,10 +23,10 @@ class PhotoViewer extends StatelessWidget {
           Theme(
               data: Theme.of(context).copyWith(
                   dividerTheme: DividerThemeData(
-                      color: BasicUtils().allColor, thickness: 0.5)),
+                      color: BasicUtils().allColor, thickness: 0.1.h)),
               child: PopupMenuButton<int>(
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(14))),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(1.h))),
                 icon: const FaIcon(
                   FontAwesomeIcons.bars,
                   color: Colors.white,
@@ -38,10 +39,11 @@ class PhotoViewer extends StatelessWidget {
                           Text(
                             "Gallery",
                             style: GoogleFonts.rubik(
-                                color: BasicUtils().allColor, fontSize: 17),
+                                color: BasicUtils().allColor,
+                                fontSize: 0.28.dp),
                           ),
-                          const SizedBox(
-                            width: 7,
+                          SizedBox(
+                            width: 1.5.w,
                           ),
                           FaIcon(FontAwesomeIcons.file,
                               color: BasicUtils().allColor),
@@ -54,9 +56,10 @@ class PhotoViewer extends StatelessWidget {
                         children: [
                           Text("Camera",
                               style: GoogleFonts.rubik(
-                                  color: BasicUtils().allColor, fontSize: 17)),
-                          const SizedBox(
-                            width: 7,
+                                  color: BasicUtils().allColor,
+                                  fontSize: 0.28.dp)),
+                          SizedBox(
+                            width: 1.5.w,
                           ),
                           FaIcon(FontAwesomeIcons.cameraRetro,
                               color: BasicUtils().allColor),
@@ -76,11 +79,11 @@ class PhotoViewer extends StatelessWidget {
               imageProvider: context.watch<ProfPicProvider>().profPic,
             ),
           ),
-          const SizedBox(
-            height: 5,
+          SizedBox(
+            height: 1.h,
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 0, 30),
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 4.h),
             child: ElevatedButton(
                 style: FormUtils().elevatedButtonStyle(),
                 onPressed: context.watch<ProfPicProvider>().profPic ==

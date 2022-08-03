@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:rive_splash_screen/rive_splash_screen.dart';
 import 'package:todo/providers/image_provider.dart';
 import 'package:todo/providers/login_signup_provider.dart';
@@ -43,23 +44,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Todo',
-      theme: ThemeData(
-          colorScheme: ColorScheme.fromSwatch().copyWith(
-        primary: BasicUtils().allColor,
-      )),
-      initialRoute: '/',
-      onGenerateRoute: RouteGenerator.generateRoute,
-      home: SplashScreen.navigate(
-        name: 'res/rive/todorive.riv',
-        next: (context) => FirebaseAuth.instance.currentUser != null
-            ? const Dashboard()
-            : LoginSignupScreen(),
-        until: () => Future.delayed(const Duration(seconds: 3)),
-        backgroundColor: BasicUtils().allColor,
-        loopAnimation: "Animation 1",
-      ),
-    );
+    return ResponsiveSizer(builder: (context, orientation, screenType) {
+      return MaterialApp(
+        title: 'Todo',
+        theme: ThemeData(
+            colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: BasicUtils().allColor,
+        )),
+        initialRoute: '/',
+        onGenerateRoute: RouteGenerator.generateRoute,
+        home: SplashScreen.navigate(
+          name: 'res/rive/todorive.riv',
+          next: (context) => FirebaseAuth.instance.currentUser != null
+              ? const Dashboard()
+              : LoginSignupScreen(),
+          until: () => Future.delayed(const Duration(seconds: 3)),
+          backgroundColor: BasicUtils().allColor,
+          loopAnimation: "Animation 1",
+        ),
+      );
+    });
   }
 }

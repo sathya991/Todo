@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 import 'package:todo/providers/image_provider.dart';
 import 'package:todo/providers/login_signup_provider.dart';
@@ -45,23 +46,23 @@ class _DashboardState extends State<Dashboard> {
       animateChildDecoration: true,
       rtlOpening: false,
       disabledGestures: false,
-      childDecoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
+      childDecoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(1.h)),
       ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             context.watch<RandomImageProvider>().imageUrl == ""
-                ? const SizedBox(
-                    height: 200,
+                ? SizedBox(
+                    height: 25.h,
                     width: double.infinity,
-                    child: Center(
+                    child: const Center(
                       child: CircularProgressIndicator(),
                     ),
                   )
                 : DrawerHeader(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 2),
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 0.5.h),
                     child: const SizedBox(),
                     decoration: BoxDecoration(
                         image: DecorationImage(
@@ -73,7 +74,6 @@ class _DashboardState extends State<Dashboard> {
             DashboardUtils().listTileStyle("Done tasks", () {
               Navigator.of(context).pushNamed(DoneTasks.doneTaskRoute);
             }),
-            DashboardUtils().listTileStyle("Settings", () {}),
             DashboardUtils().listTileStyle(
                 "Logout", () => DashboardUtils().logoutFunction(context)),
           ],
@@ -104,21 +104,21 @@ class _DashboardState extends State<Dashboard> {
         body: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(30, 20, 0, 0),
+              padding: EdgeInsets.fromLTRB(8.w, 3.h, 0.w, 0.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  ProfPic(),
+                children: [
+                  const ProfPic(),
                   SizedBox(
-                    height: 5,
+                    height: 0.7.h,
                   ),
-                  TextShow(),
+                  const TextShow(),
                 ],
               ),
             ),
             const Expanded(child: TaskList()),
-            const SizedBox(
-              height: 40,
+            SizedBox(
+              height: 5.h,
             ),
             const OptionPicker(),
           ],

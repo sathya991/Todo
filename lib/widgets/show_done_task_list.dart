@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:todo/providers/task_provider.dart';
 import 'package:todo/utils/basic_utils.dart';
 
@@ -22,10 +23,10 @@ class ShowEachTaskList extends StatelessWidget {
           var curTime = BasicUtils().timeStampToDT(
               (curTask['time'] as Timestamp).toDate().toString());
           return Padding(
-            padding: const EdgeInsets.all(3.0),
+            padding: EdgeInsets.all(0.1.h),
             child: Card(
                 child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(1.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -36,34 +37,34 @@ class ShowEachTaskList extends StatelessWidget {
                         "Task:",
                         style: GoogleFonts.rubik(
                             fontWeight: FontWeight.bold,
-                            fontSize: 18,
+                            fontSize: 0.28.dp,
                             color: textColor),
                       ),
-                      const SizedBox(
-                        height: 2,
+                      SizedBox(
+                        height: 0.4.h,
                       ),
                       Text(
                         curTask['task'],
-                        style:
-                            GoogleFonts.rubik(fontSize: 18, color: textColor),
+                        style: GoogleFonts.rubik(
+                            fontSize: 0.28.dp, color: textColor),
                       ),
-                      const SizedBox(
-                        height: 5,
+                      SizedBox(
+                        height: 0.4.h,
                       ),
                       Text(
                         "Time:",
                         style: GoogleFonts.rubik(
                             fontWeight: FontWeight.bold,
-                            fontSize: 18,
+                            fontSize: 0.28.dp,
                             color: textColor),
                       ),
-                      const SizedBox(
-                        height: 2,
+                      SizedBox(
+                        height: 0.4.h,
                       ),
                       Text(
                         BasicUtils().dtToString(curTime),
-                        style:
-                            GoogleFonts.rubik(fontSize: 14, color: textColor),
+                        style: GoogleFonts.rubik(
+                            fontSize: 0.26.dp, color: textColor),
                       )
                     ],
                   ),
@@ -78,7 +79,7 @@ class ShowEachTaskList extends StatelessWidget {
                         "Not done",
                         style: GoogleFonts.rubik(
                             color: contrastColor,
-                            fontSize: 15,
+                            fontSize: 0.26.dp,
                             fontWeight: FontWeight.w500),
                       )),
                 ],
