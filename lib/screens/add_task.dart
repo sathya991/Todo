@@ -53,7 +53,8 @@ class AddTask extends StatelessWidget {
                           'id': uuid.v4(),
                           'task': tasks[i],
                           'time': DateTime.now(),
-                          'type': firebaseCollectionString
+                          'type': firebaseCollectionString,
+                          'status': ''
                         });
                       }
                       context.read<TaskProvider>().clearCurList();

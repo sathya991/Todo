@@ -32,19 +32,19 @@ class TaskList extends StatelessWidget {
         itemCount: context.watch<TaskProvider>().tasks.length,
         itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
           Color curColor = Colors.white;
-          Color textColor = Colors.black;
+          Color textColor = Colors.white;
           if (context.watch<TaskProvider>().tasks[itemIndex][2] == 'urgent') {
             curColor = BasicUtils().urgentColor;
             textColor = Colors.white;
           } else if (context.watch<TaskProvider>().tasks[itemIndex][2] ==
               'medium') {
             curColor = BasicUtils().mediumColor;
-            textColor = Colors.black;
+            textColor = Colors.white;
           } else {
             curColor = BasicUtils().leisureColor;
             textColor = Colors.white;
           }
-          var dt = DateTime.parse(
+          var dt = BasicUtils().timeStampToDT(
               (context.watch<TaskProvider>().tasks[itemIndex][1] as Timestamp)
                   .toDate()
                   .toString());
@@ -57,7 +57,7 @@ class TaskList extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(DateFormat('dd/MM/yyyy, hh:mm').format(dt),
+                      Text(BasicUtils().dtToString(dt),
                           style: GoogleFonts.rubik(
                               color: textColor, fontSize: 17)),
                       const SizedBox(
@@ -85,7 +85,11 @@ class TaskList extends StatelessWidget {
                               )),
                           IconButton(
                               iconSize: 30,
-                              onPressed: () {},
+                              onPressed: () {
+                                context.read<TaskProvider>().taskDone(context
+                                    .read<TaskProvider>()
+                                    .tasks[itemIndex]);
+                              },
                               icon: Icon(
                                 Icons.check,
                                 color: textColor,

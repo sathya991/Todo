@@ -46,11 +46,11 @@ class OptionPicker extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pushNamed(AddTask.addTaskRoute,
                           arguments: AddTask(BasicUtils().mediumColor,
-                              Colors.black, "Not so urgent", "medium"));
+                              Colors.white, "Not so urgent", "medium"));
                     },
                     child: Text(
                       "Not so urgent",
-                      style: BasicUtils().mediumButtonTextStyle,
+                      style: BasicUtils().buttonTextStyle,
                     ),
                   ),
                   ElevatedButton(
