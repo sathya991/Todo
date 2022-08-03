@@ -17,8 +17,12 @@ class TaskProvider extends ChangeNotifier {
         .get()
         .then((value) {
       for (var element in value.docs) {
-        _tasks.add(
-            [element.get('task'), element.get('time'), element.get('type')]);
+        _tasks.add([
+          element.get('task'),
+          element.get('time'),
+          element.get('type'),
+          element.get('id')
+        ]);
       }
       _tasks.sort((a, b) {
         return a[1].compareTo(b[1]);
@@ -37,8 +41,12 @@ class TaskProvider extends ChangeNotifier {
         .get()
         .then((value) {
       for (var element in value.docs) {
-        _tasks.add(
-            [element.get('task'), element.get('time'), element.get('type')]);
+        _tasks.add([
+          element.get('task'),
+          element.get('time'),
+          element.get('type'),
+          element.get('id')
+        ]);
       }
       _tasks.sort((a, b) {
         return a[1].compareTo(b[1]);
@@ -57,8 +65,12 @@ class TaskProvider extends ChangeNotifier {
         .get()
         .then((value) {
       for (var element in value.docs) {
-        _tasks.add(
-            [element.get('task'), element.get('time'), element.get('type')]);
+        _tasks.add([
+          element.get('task'),
+          element.get('time'),
+          element.get('type'),
+          element.get('id')
+        ]);
       }
       sortList();
       notifyListeners();
@@ -83,5 +95,19 @@ class TaskProvider extends ChangeNotifier {
 
   clearCurList() {
     _curTasks.clear();
+  }
+
+  deleteTask(List task) {
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(BasicUtils().curUserUid)
+        .collection(task[2])
+        .where('id', isEqualTo: task[3])
+        .get()
+        .then((value) {
+      value.docs.first.reference.delete();
+      _tasks.remove(task);
+      notifyListeners();
+    });
   }
 }

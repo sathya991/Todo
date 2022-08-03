@@ -58,6 +58,7 @@ dependencies:
   expand_widget: ^2.1.0
   grouped_list: ^5.1.2
   intl: ^0.17.0
+  uuid: ^3.0.6
 
 flutter_native_splash:
   color: "#8555f6"

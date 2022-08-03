@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:todo/providers/task_provider.dart';
 import 'package:todo/screens/dashboard.dart';
 import 'package:todo/utils/basic_utils.dart';
+import 'package:uuid/uuid.dart';
 
 class AddTask extends StatelessWidget {
   static const String addTaskRoute = '/add-task-route';
@@ -20,6 +21,7 @@ class AddTask extends StatelessWidget {
   final String firebaseCollectionString;
 
   final fieldText = TextEditingController();
+  var uuid = const Uuid();
   @override
   Widget build(BuildContext context) {
     List tasks = context.watch<TaskProvider>().curTasks;
@@ -48,6 +50,7 @@ class AddTask extends StatelessWidget {
                             .collection(firebaseCollectionString)
                             .doc()
                             .set({
+                          'id': uuid.v4(),
                           'task': tasks[i],
                           'time': DateTime.now(),
                           'type': firebaseCollectionString

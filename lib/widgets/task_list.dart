@@ -74,7 +74,11 @@ class TaskList extends StatelessWidget {
                         children: [
                           IconButton(
                               iconSize: 30,
-                              onPressed: () {},
+                              onPressed: () {
+                                context.read<TaskProvider>().deleteTask(context
+                                    .read<TaskProvider>()
+                                    .tasks[itemIndex]);
+                              },
                               icon: Icon(
                                 Icons.delete,
                                 color: textColor,

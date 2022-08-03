@@ -58,13 +58,16 @@ class ProfPicProvider extends ChangeNotifier {
   }
 
   cropimage(File file) async {
+    File ftemp = file;
     await ImageCropper.platform.cropImage(
         sourcePath: file.path,
         aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1),
         aspectRatioPresets: [CropAspectRatioPreset.original]).then((value) {
-      _profPic = FileImage(file);
-      FirebaseStorageUtils().uploadImage(file);
-      notifyListeners();
+      if (value != null) {
+        _profPic = FileImage(File(value.path));
+        FirebaseStorageUtils().uploadImage(File(value.path));
+        notifyListeners();
+      }
     });
   }
 

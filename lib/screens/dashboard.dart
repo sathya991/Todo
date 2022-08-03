@@ -5,6 +5,7 @@ import 'package:todo/providers/image_provider.dart';
 import 'package:todo/providers/login_signup_provider.dart';
 import 'package:todo/providers/prof_pic_provider.dart';
 import 'package:todo/providers/task_provider.dart';
+import 'package:todo/screens/done_tasks.dart';
 import 'package:todo/utils/basic_utils.dart';
 import 'package:todo/utils/dashboard_utils.dart';
 import 'package:todo/utils/security_utils.dart';
@@ -69,7 +70,9 @@ class _DashboardState extends State<Dashboard> {
                                 .watch<RandomImageProvider>()
                                 .imageUrl))),
                   ),
-            DashboardUtils().listTileStyle("Done tasks", () {}),
+            DashboardUtils().listTileStyle("Done tasks", () {
+              Navigator.of(context).pushNamed(DoneTasks.doneTaskRoute);
+            }),
             DashboardUtils().listTileStyle("Settings", () {}),
             DashboardUtils().listTileStyle(
                 "Logout", () => DashboardUtils().logoutFunction(context)),
