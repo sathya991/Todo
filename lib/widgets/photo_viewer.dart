@@ -3,10 +3,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:todo/providers/prof_pic_provider.dart';
 import 'package:todo/utils/basic_utils.dart';
 import 'package:provider/provider.dart';
-import 'package:todo/utils/firebase_storage_utils.dart';
 import 'package:todo/utils/form_utils.dart';
 import 'package:todo/widgets/prof_pic.dart';
 
@@ -74,10 +74,23 @@ class PhotoViewer extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-            child: PhotoView(
-              imageProvider: context.watch<ProfPicProvider>().profPic,
-            ),
-          ),
+              child: context.watch<ProfPicProvider>().isUploading
+                  ? Shimmer.fromColors(
+                      child: Center(
+                        child: Container(
+                          height: 45.h,
+                          width: double.infinity,
+                          decoration:
+                              BoxDecoration(color: BasicUtils().allColor),
+                        ),
+                      ),
+                      baseColor: BasicUtils().allColor,
+                      highlightColor: Colors.white)
+                  : PhotoView(
+                      backgroundDecoration:
+                          const BoxDecoration(color: Colors.white),
+                      imageProvider: context.watch<ProfPicProvider>().profPic,
+                    )),
           SizedBox(
             height: 1.h,
           ),

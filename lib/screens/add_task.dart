@@ -86,11 +86,13 @@ class AddTask extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                tasks[index],
-                                style: GoogleFonts.rubik(
-                                  color: color,
-                                  fontSize: 17.sp,
+                              Flexible(
+                                child: Text(
+                                  tasks[index],
+                                  style: GoogleFonts.rubik(
+                                    color: color,
+                                    fontSize: 17.sp,
+                                  ),
                                 ),
                               ),
                               IconButton(

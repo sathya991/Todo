@@ -2,10 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:todo/utils/basic_utils.dart';
+import 'package:provider/provider.dart';
 
 class FormUtils {
-  formDecoration(String hintText) {
+  formDecoration(String hintText, bool isPassword, Function() f,
+      bool passwordNotVisibile) {
     return InputDecoration(
+      suffixIcon: isPassword
+          ? IconButton(
+              onPressed: f,
+              icon: passwordNotVisibile
+                  ? const Icon(Icons.visibility_off)
+                  : const Icon(Icons.visibility))
+          : const SizedBox.shrink(),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(1.h),
         borderSide: BorderSide(

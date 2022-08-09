@@ -14,6 +14,12 @@ class TaskProvider extends ChangeNotifier {
 
   List _curTasks = [];
   List get curTasks => _curTasks;
+
+  clearTask() {
+    _curTasks.clear();
+    notifyListeners();
+  }
+
   getUrgentTasks() async {
     _tasks.clear();
     await FirebaseFirestore.instance
@@ -209,6 +215,46 @@ class TaskProvider extends ChangeNotifier {
         _leisureDoneTasks.remove(task);
       }
       notifyListeners();
+    });
+  }
+
+  clearDoneTasks() async {
+    _urgentDoneTasks.clear();
+    _mediumDoneTasks.clear();
+    _leisureDoneTasks.clear();
+    notifyListeners();
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(BasicUtils().curUserUid)
+        .collection('urgent')
+        .where('status', isEqualTo: 'done')
+        .get()
+        .then((value) {
+      for (var el in value.docs) {
+        el.reference.delete();
+      }
+    });
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(BasicUtils().curUserUid)
+        .collection('medium')
+        .where('status', isEqualTo: 'done')
+        .get()
+        .then((value) {
+      for (var el in value.docs) {
+        el.reference.delete();
+      }
+    });
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(BasicUtils().curUserUid)
+        .collection('leisure')
+        .where('status', isEqualTo: 'done')
+        .get()
+        .then((value) {
+      for (var el in value.docs) {
+        el.reference.delete();
+      }
     });
   }
 }

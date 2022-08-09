@@ -65,6 +65,26 @@ class _DoneTasksState extends State<DoneTasks>
           backgroundColor: color,
           foregroundColor: contrastColor,
           centerTitle: false,
+          actions: [
+            Padding(
+              padding: EdgeInsets.all(1.h),
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      primary: contrastColor,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(0.8.h))),
+                  onPressed: () {
+                    context.read<TaskProvider>().clearDoneTasks();
+                  },
+                  child: Text(
+                    "Clear tasks",
+                    style: GoogleFonts.rubik(
+                      color: color,
+                      fontSize: 17.sp,
+                    ),
+                  )),
+            )
+          ],
           title: Text(
             "Done tasks",
             style: GoogleFonts.rubik(fontSize: 18.sp),

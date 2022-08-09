@@ -9,6 +9,9 @@ class LoginSignupProvider extends ChangeNotifier {
   Widget get curWidget => _widget;
   String _curText = "Sign up here";
 
+  bool _notVisibility = true;
+  bool get passwordNotVisibile => _notVisibility;
+
   String _userName = "";
   String get userName => _userName;
   String get curText => _curText;
@@ -20,6 +23,11 @@ class LoginSignupProvider extends ChangeNotifier {
       _widget = LoginWidget();
       _curText = "Sign up here";
     }
+    notifyListeners();
+  }
+
+  toggleVisibility() {
+    _notVisibility = !_notVisibility;
     notifyListeners();
   }
 

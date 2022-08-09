@@ -24,7 +24,7 @@ class DashboardUtils {
   logoutFunction(BuildContext context) {
     FirebaseAuth.instance.signOut().then((value) {
       SecureStorage.delete();
-      Navigator.of(context).pushNamed('/');
+      Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
     });
   }
 }

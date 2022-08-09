@@ -2,9 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:todo/providers/login_signup_provider.dart';
 import 'package:todo/screens/dashboard.dart';
 import 'package:todo/utils/form_utils.dart';
 import 'package:todo/utils/security_utils.dart';
+import 'package:provider/provider.dart';
 
 class LoginWidget extends StatelessWidget {
   LoginWidget({Key? key}) : super(key: key);
@@ -46,7 +48,8 @@ class LoginWidget extends StatelessWidget {
         child: Column(
           children: [
             TextFormField(
-              decoration: FormUtils().formDecoration("Email"),
+              decoration:
+                  FormUtils().formDecoration("Email", false, () {}, true),
               validator: (txt) => FormUtils().emailValidation(txt!),
               onSaved: (emailText) {
                 _email = emailText!;
@@ -56,9 +59,16 @@ class LoginWidget extends StatelessWidget {
               height: 1.5.h,
             ),
             TextFormField(
-              decoration: FormUtils().formDecoration("Password"),
+              decoration: FormUtils().formDecoration(
+                  "Password",
+                  true,
+                  () => context.read<LoginSignupProvider>().toggleVisibility(),
+                  context.watch<LoginSignupProvider>().passwordNotVisibile),
               validator: (txt) => FormUtils().passwordValidate(txt!),
-              obscureText: true,
+              obscureText:
+                  context.watch<LoginSignupProvider>().passwordNotVisibile
+                      ? true
+                      : false,
               onSaved: (passwordText) {
                 _password = passwordText!;
               },

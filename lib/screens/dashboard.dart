@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:shimmer/shimmer.dart';
 
 import 'package:todo/providers/image_provider.dart';
 import 'package:todo/providers/login_signup_provider.dart';
@@ -31,6 +32,7 @@ class _DashboardState extends State<Dashboard> {
     super.initState();
     context.read<LoginSignupProvider>().getUserName();
     context.read<ProfPicProvider>().downloadProfPic();
+    context.read<ProfPicProvider>().loadProfPic();
     context.read<TaskProvider>().getUrgentTasks();
     context.read<TaskProvider>().getMediumTasks();
     context.read<TaskProvider>().getLeisureTasks();
@@ -54,13 +56,13 @@ class _DashboardState extends State<Dashboard> {
           padding: EdgeInsets.zero,
           children: [
             context.watch<RandomImageProvider>().imageUrl == ""
-                ? SizedBox(
-                    height: 25.h,
-                    width: double.infinity,
-                    child: const Center(
-                      child: CircularProgressIndicator(),
+                ? Shimmer.fromColors(
+                    child: Container(
+                      decoration: BoxDecoration(color: BasicUtils().allColor),
+                      height: 23.h,
                     ),
-                  )
+                    baseColor: BasicUtils().allColor,
+                    highlightColor: Colors.white)
                 : DrawerHeader(
                     padding: EdgeInsets.fromLTRB(0, 0, 0, 0.5.h),
                     child: const SizedBox(),

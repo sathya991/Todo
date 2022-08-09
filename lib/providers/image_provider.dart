@@ -9,15 +9,17 @@ class RandomImageProvider extends ChangeNotifier {
 
   getRandomImage() async {
     _imageUrl = "";
+    notifyListeners();
     var url = Uri.parse(
         "https://api.unsplash.com/photos/random/?client_id=c-T-bWkQO_WyhmghtbNv0-vzSksGScug73oAYjMEHdE");
     final res = await http.get(url);
     var urlData = jsonDecode(res.body);
     if (urlData['width'] > urlData['height']) {
       _imageUrl = urlData['urls']['full'];
+      notifyListeners();
     } else {
       getRandomImage();
+      notifyListeners();
     }
-    notifyListeners();
   }
 }
